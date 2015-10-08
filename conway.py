@@ -45,8 +45,10 @@ class ConwayGame(App):
         self.livingcells = {}
         # set three living cells
         self.livingcells[(10,10)] = 0
-        self.livingcells[(10,11)] = 0
-        self.livingcells[(10,12)] = 0
+        self.livingcells[(11,10)] = 0
+        self.livingcells[(12,10)] = 0
+        self.livingcells[(12,9)] = 0
+        self.livingcells[(11,8)] = 0
 
     def population(self, addr):
         if addr in self.livingcells:
