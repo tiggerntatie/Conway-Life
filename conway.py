@@ -44,7 +44,6 @@ class ConwayGame(App):
         # Sprite(bgasset, (0,0))
         self.livingcells = {}
         # set three living cells
-        """
         self.livingcells[(10,10)] = 0
         self.livingcells[(11,10)] = 0
         self.livingcells[(12,10)] = 0
@@ -54,6 +53,7 @@ class ConwayGame(App):
         self.livingcells[(10,10)] = 0
         self.livingcells[(11,10)] = 0
         self.livingcells[(12,10)] = 0
+        """
 
     def population(self, addr):
         if addr in self.livingcells:
@@ -93,8 +93,6 @@ class ConwayGame(App):
                 self.birthnew(nextgen, naddr)
         for s in self.getSpritesbyClass(Cell):
             s.destroy()
-            self.spritelist.remove(s)
-        print("step")
         self.livingcells = nextgen
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
