@@ -43,23 +43,20 @@ class ConwayGame(App):
         bgasset = RectangleAsset(w, h, noline, black)
         # Sprite(bgasset, (0,0))
         self.livingcells = {}
+        self.newcells = []
+        self.oldcells = []
         # set three living cells
-        self.livingcells[(10,10)] = 0
-        self.livingcells[(11,10)] = 0
-        self.livingcells[(12,10)] = 0
-        self.livingcells[(12,9)] = 0
-        self.livingcells[(11,8)] = 0
+        self.makeglider((10,10))
+        self.makeglider((20,25))
+        
 
-        self.livingcells[(30,10)] = 0
-        self.livingcells[(31,10)] = 0
-        self.livingcells[(32,10)] = 0
-        self.livingcells[(32,9)] = 0
-        self.livingcells[(31,8)] = 0
-        """
-        self.livingcells[(10,10)] = 0
-        self.livingcells[(11,10)] = 0
-        self.livingcells[(12,10)] = 0
-        """
+    def makeglider(self, pos):
+        self.livingcells[pos] = 0
+        self.livingcells[(pos[0]+1, pos[1])] = 0
+        self.livingcells[(pos[0]+2, pos[1])] = 0
+        self.livingcells[(pos[0]+2, pos[1]-1)] = 0
+        self.livingcells[(pos[0]+1, pos[1]-2)] = 0
+        
 
     def population(self, addr):
         if addr in self.livingcells:
