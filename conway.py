@@ -6,7 +6,7 @@ Assignment:
 Write and submit a program that plays Conway's Game of Life, per 
 https://github.com/HHS-IntroProgramming/Conway-Life
 """
-from ggame import App, Sprite, CircleAsset, RectangleAsset, Color
+from ggame import App, Sprite, CircleAsset, RectangleAsset, Color, LineStyle
 
 red = Color(0xff0000, 1.0)
 blue = Color(0x0000ff, 1.0)
