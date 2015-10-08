@@ -49,6 +49,12 @@ class ConwayGame(App):
         self.livingcells[(12,10)] = 0
         self.livingcells[(12,9)] = 0
         self.livingcells[(11,8)] = 0
+
+        self.livingcells[(30,10)] = 0
+        self.livingcells[(31,10)] = 0
+        self.livingcells[(32,10)] = 0
+        self.livingcells[(32,9)] = 0
+        self.livingcells[(31,8)] = 0
         """
         self.livingcells[(10,10)] = 0
         self.livingcells[(11,10)] = 0
