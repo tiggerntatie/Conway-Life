@@ -43,8 +43,17 @@ class ConwayGame(App):
         bgasset = RectangleAsset(w, h, noline, black)
         # Sprite(bgasset, (0,0))
         self.livingcells = {}
-        self.newcells = []
-        self.oldcells = []
+        self.newcells = {}
+        self.oldcells = {}
+        for row = range(CELLSHIGH):
+            for col = range(CELLSWIDE):
+                c = Cell(True, (col*CELLDIAMETER, row*CELLDIAMETER))
+                c.visible = False
+                self.newcells[(col, row)] = c
+                c = Cell(False, (col*CELLDIAMETER, row*CELLDIAMETER))
+                c.visible = False
+                self.oldcells[(col, row)] = c
+                
         # set three living cells
         for i in range(10):
             self.makeglider((i*10,10))
