@@ -29,12 +29,7 @@ class Cell(Sprite):
         if new:
             asset = Cell.redcircle
         super.__init__(asset, pos)
-        self.address = (None, None)
-        self.visible = False
-        
-    def setAddress(self, x, y):
-        self.address = (x, y)
-        
+
 class ConwayGame(App):
     """
     App for implementing Conway's Game of Life
@@ -45,9 +40,55 @@ class ConwayGame(App):
         super().__init__(w, h)
         bgasset = RectangleAsset(w, h, noline, black)
         Sprite(bgasset, (0,0))
+        self.livingcells = {}
+        # set three living cells
+        self.livingcells[(10,10)] = 0
+        self.livingcells[(10,11)] = 0
+        self.livingcells[(10,12)] = 0
     
+    def population(self, addr):
+        if addr in self.livingcells:
+            return 1
+        else:
+            return 0
+    
+    def neighboraddresses(self, addr):
+        return [(addr[0]+1, addr[1]+1),
+                (addr[0], addr[1]+1),
+                (addr[0]-1, addr[1]+1),
+                (addr[0]-1, addr[1]),
+                (addr[0]+1, addr[1]),
+                (addr[0]+1, addr[1]-1),
+                (addr[0], addr[1]-1),
+                (addr[0]-1, addr[1]-1)]
+                
+    
+    def countneighbors(self, addr):
+        count = 0
+        for naddr in self.neighboraddresses(addr):
+            count += population(naddr)
+        return count
+
+    def birthnew(self, nextgen, addr):
+        if addr not in self.livingcells:
+            if self.countneighbors(addr) == 3:
+                nextgen[addr] = 0
+
     def step(self):
-        pass
+        nextgen = {}
+        for addr in self.livingcells:
+            n = self.countneighbors(addr)
+            if n in (2, 3):
+                nextgen[addr] = self.livingcells[addr]+1
+            for naddr in self.neighboraddresses(addr):
+                self.birthnew(nextgen, naddr)
+        for s in self.getSpritesbyClass(Cell):
+            s.destroy()
+            self.spritelist.remove(s)
+        self.livingcells = nextgen
+        for c in self.livingcells:
+            
+            
 
 App = ConwayGame()
 App.run()
