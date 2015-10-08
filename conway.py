@@ -45,6 +45,8 @@ class ConwayGame(App):
         self.livingcells[(10,10)] = 0
         self.livingcells[(10,11)] = 0
         self.livingcells[(10,12)] = 0
+        # test Cell?
+        Cell(True, (10, 10))
     
     def population(self, addr):
         if addr in self.livingcells:
