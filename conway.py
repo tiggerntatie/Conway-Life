@@ -16,8 +16,6 @@ CELLDIAMETER = 10
 CELLSWIDE = 100
 CELLSHIGH = 50
 
-bluecircle = CircleAsset(4, noline, blue)
-redcircle = CircleAsset(4, noline, red)
 
 
 class Cell(Sprite):
@@ -25,13 +23,14 @@ class Cell(Sprite):
     Cell that is either new or old.
     Pass True for new if it shall be a new color.
     """
+    bluecircle = CircleAsset(4, noline, blue)
+    redcircle = CircleAsset(4, noline, red)
+
     def __init__(self, new, pos):
-        """
-        asset = bluecircle
+        asset = Cell.bluecircle
         if new:
-            asset = redcircle
-        """
-        super.__init__(redcircle, (10,10))
+            asset = Cell.redcircle
+        super().__init__(asset, pos)
 
 class ConwayGame(App):
     """
@@ -48,10 +47,7 @@ class ConwayGame(App):
         self.livingcells[(10,10)] = 0
         self.livingcells[(10,11)] = 0
         self.livingcells[(10,12)] = 0
-        # test Cell?
-        Cell(True, (10, 10))
-        #Sprite(Cell.redcircle, (10,10))
-    
+
     def population(self, addr):
         if addr in self.livingcells:
             return 1
@@ -81,7 +77,6 @@ class ConwayGame(App):
                 nextgen[addr] = 0
 
     def step(self):
-        """
         nextgen = {}
         for addr in self.livingcells:
             n = self.countneighbors(addr)
@@ -96,8 +91,6 @@ class ConwayGame(App):
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
             Cell(isnew, (c.x*CELLDIAMETER, c.y*CELLDIAMETER))
-        """
-        pass            
 
 App = ConwayGame()
 App.run()
