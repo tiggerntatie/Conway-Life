@@ -6,7 +6,7 @@ Assignment:
 Write and submit a program that plays Conway's Game of Life, per 
 https://github.com/HHS-IntroProgramming/Conway-Life
 """
-from ggame import App, Sprite, CircleAsset, Color
+from ggame import App, Sprite, CircleAsset, RectangleAsset, Color
 
 red = Color(0xff0000, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -40,7 +40,11 @@ class ConwayGame(App):
     App for implementing Conway's Game of Life
     """
     def __init__(self):
-        super().__init__(CELLDIAMETER*CELLSWIDE, CELLDIAMETER*CELLSHIGH)
+        w = CELLDIAMETER*CELLSWIDE
+        h = CELLDIAMETER*CELLSHIGH
+        super().__init__(w, h)
+        bgasset = RectangleAsset(w, h, noline, black)
+        Sprite(bgasset, (0,0))
     
     def step(self):
         pass
