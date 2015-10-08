@@ -85,7 +85,6 @@ class ConwayGame(App):
                 nextgen[addr] = self.livingcells[addr]+1
             for naddr in self.neighboraddresses(addr):
                 self.birthnew(nextgen, naddr)
-        """
         for s in self.getSpritesbyClass(Cell):
             s.destroy()
             self.spritelist.remove(s)
@@ -93,7 +92,8 @@ class ConwayGame(App):
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
             Cell(isnew, (c.x*CELLDIAMETER, c.y*CELLDIAMETER))
-            
+        """
+        pass            
 
 App = ConwayGame()
 App.run()
