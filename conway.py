@@ -46,9 +46,9 @@ class ConwayGame(App):
         self.newcells = []
         self.oldcells = []
         # set three living cells
-        self.makeglider((10,10))
-        self.makeglider((20,25))
-        
+        for i in range(10):
+            self.makeglider((i*10,10))
+
 
     def makeglider(self, pos):
         self.livingcells[pos] = 0
