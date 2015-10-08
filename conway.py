@@ -45,8 +45,8 @@ class ConwayGame(App):
         self.livingcells = {}
         self.newcells = {}
         self.oldcells = {}
-        for row = range(CELLSHIGH):
-            for col = range(CELLSWIDE):
+        for row in range(CELLSHIGH):
+            for col in range(CELLSWIDE):
                 c = Cell(True, (col*CELLDIAMETER, row*CELLDIAMETER))
                 c.visible = False
                 self.newcells[(col, row)] = c
