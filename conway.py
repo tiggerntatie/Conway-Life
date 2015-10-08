@@ -22,7 +22,7 @@ class Cell(Sprite):
     Pass True for new if it shall be a new color.
     """
     bluecircle = CircleAsset(4, noline, blue)
-    redcircle = CircleAsset(4, noline, blue)
+    redcircle = CircleAsset(4, noline, red)
 
     def __init__(self, new, pos):
         asset = Cell.bluecircle
