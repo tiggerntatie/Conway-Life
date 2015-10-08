@@ -44,11 +44,16 @@ class ConwayGame(App):
         # Sprite(bgasset, (0,0))
         self.livingcells = {}
         # set three living cells
+        """
         self.livingcells[(10,10)] = 0
         self.livingcells[(11,10)] = 0
         self.livingcells[(12,10)] = 0
         self.livingcells[(12,9)] = 0
         self.livingcells[(11,8)] = 0
+        """
+        self.livingcells[(10,10)] = 0
+        self.livingcells[(11,10)] = 0
+        self.livingcells[(12,10)] = 0
 
     def population(self, addr):
         if addr in self.livingcells:
@@ -79,6 +84,7 @@ class ConwayGame(App):
                 nextgen[addr] = 0
 
     def step(self):
+        print("step")
         nextgen = {}
         for addr in self.livingcells:
             n = self.countneighbors(addr)
