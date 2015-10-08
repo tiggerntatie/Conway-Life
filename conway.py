@@ -13,8 +13,8 @@ blue = Color(0x0000ff, 1.0)
 black = Color(0, 1.0)
 noline = LineStyle(0, black)
 CELLDIAMETER = 10
-CELLSWIDE = 15
-CELLSHIGH = 15
+CELLSWIDE = 100
+CELLSHIGH = 50
 
 
 
