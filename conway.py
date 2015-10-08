@@ -75,6 +75,7 @@ class ConwayGame(App):
                 nextgen[addr] = 0
 
     def step(self):
+        """
         nextgen = {}
         for addr in self.livingcells:
             n = self.countneighbors(addr)
@@ -82,10 +83,11 @@ class ConwayGame(App):
                 nextgen[addr] = self.livingcells[addr]+1
             for naddr in self.neighboraddresses(addr):
                 self.birthnew(nextgen, naddr)
+        """
         for s in self.getSpritesbyClass(Cell):
             s.destroy()
             self.spritelist.remove(s)
-        self.livingcells = nextgen
+        # self.livingcells = nextgen
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
             Cell(isnew, (c.x*CELLDIAMETER, c.y*CELLDIAMETER))
