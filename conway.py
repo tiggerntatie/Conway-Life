@@ -13,8 +13,8 @@ blue = Color(0x0000ff, 1.0)
 black = Color(0, 1.0)
 noline = LineStyle(0, black)
 CELLDIAMETER = 10
-CELLSWIDE = 100
-CELLSHIGH = 50
+CELLSWIDE = 15
+CELLSHIGH = 15
 
 
 
@@ -55,8 +55,8 @@ class ConwayGame(App):
                 self.oldcells[(col, row)] = c
                 
         # set three living cells
-        for i in range(10):
-            self.makeglider((i*10,10))
+        for i in range(1):
+            self.makeglider((i*10,5))
 
 
     def makeglider(self, pos):
