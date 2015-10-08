@@ -16,19 +16,22 @@ CELLDIAMETER = 10
 CELLSWIDE = 100
 CELLSHIGH = 50
 
+bluecircle = CircleAsset(4, noline, blue)
+redcircle = CircleAsset(4, noline, red)
+
+
 class Cell(Sprite):
     """
     Cell that is either new or old.
     Pass True for new if it shall be a new color.
     """
-    bluecircle = CircleAsset(4, noline, blue)
-    redcircle = CircleAsset(4, noline, red)
-
     def __init__(self, new, pos):
-        asset = Cell.bluecircle
+        """
+        asset = bluecircle
         if new:
-            asset = Cell.redcircle
-        super.__init__(asset, pos)
+            asset = redcircle
+        """
+        super.__init__(redcircle, (10,10))
 
 class ConwayGame(App):
     """
@@ -39,7 +42,7 @@ class ConwayGame(App):
         h = CELLDIAMETER*CELLSHIGH
         super().__init__(w, h)
         bgasset = RectangleAsset(w, h, noline, black)
-        Sprite(bgasset, (0,0))
+        # Sprite(bgasset, (0,0))
         self.livingcells = {}
         # set three living cells
         self.livingcells[(10,10)] = 0
@@ -47,6 +50,7 @@ class ConwayGame(App):
         self.livingcells[(10,12)] = 0
         # test Cell?
         Cell(True, (10, 10))
+        #Sprite(Cell.redcircle, (10,10))
     
     def population(self, addr):
         if addr in self.livingcells:
