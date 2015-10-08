@@ -68,7 +68,7 @@ class ConwayGame(App):
     def countneighbors(self, addr):
         count = 0
         for naddr in self.neighboraddresses(addr):
-            count += population(naddr)
+            count += self.population(naddr)
         return count
 
     def birthnew(self, nextgen, addr):
@@ -87,7 +87,7 @@ class ConwayGame(App):
         for s in self.getSpritesbyClass(Cell):
             s.destroy()
             self.spritelist.remove(s)
-        # self.livingcells = nextgen
+        self.livingcells = nextgen
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
             Cell(isnew, (c[0]*CELLDIAMETER, c[1]*CELLDIAMETER))
