@@ -35,3 +35,15 @@ class Cell(Sprite):
     def setAddress(self, x, y):
         self.address = (x, y)
         
+class ConwayGame(App):
+    """
+    App for implementing Conway's Game of Life
+    """
+    def __init__(self):
+        super().__init__(CELLDIAMETER*CELLSWIDE, CELLDIAMETER*CELLSHIGH)
+    
+    def step(self):
+        pass
+
+App = ConwayGame()
+App.run()
