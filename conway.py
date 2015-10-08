@@ -90,7 +90,7 @@ class ConwayGame(App):
         # self.livingcells = nextgen
         for c in self.livingcells:
             isnew = self.livingcells[c] == 0
-            Cell(isnew, (c.x*CELLDIAMETER, c.y*CELLDIAMETER))
+            Cell(isnew, (c[0]*CELLDIAMETER, c[1]*CELLDIAMETER))
 
 App = ConwayGame()
 App.run()
