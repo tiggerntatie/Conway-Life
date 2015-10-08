@@ -87,7 +87,8 @@ class ConwayGame(App):
             self.spritelist.remove(s)
         self.livingcells = nextgen
         for c in self.livingcells:
-            
+            isnew = self.livingcells[c] == 0
+            Cell(isnew, (c.x*CELLDIAMETER, c.y*CELLDIAMETER))
             
 
 App = ConwayGame()
