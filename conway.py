@@ -92,6 +92,7 @@ class ConwayGame(App):
             for naddr in self.neighboraddresses(addr):
                 self.birthnew(nextgen, naddr)
         for s in self.getSpritesbyClass(Cell):
+            s.visible = False
             s.destroy()
         self.livingcells = nextgen
         for c in self.livingcells:
