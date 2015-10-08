@@ -43,21 +43,30 @@ class ConwayGame(App):
         bgasset = RectangleAsset(w, h, noline, black)
         # Sprite(bgasset, (0,0))
         self.livingcells = {}
-        self.newcells = {}
-        self.oldcells = {}
-        for row in range(CELLSHIGH):
-            for col in range(CELLSWIDE):
-                c = Cell(True, (col*CELLDIAMETER, row*CELLDIAMETER))
-                c.visible = False
-                self.newcells[(col, row)] = c
-                c = Cell(False, (col*CELLDIAMETER, row*CELLDIAMETER))
-                c.visible = False
-                self.oldcells[(col, row)] = c
-                
+        self.newcells = []
+        self.oldcells = []
+        self.cells = {}
+        self.cells[True] = []
+        self.cells[False] = []
+        self.activecells = {}
+        self.activecells[True] = []
+        self.activecells[False] = []
+
         # set three living cells
         for i in range(1):
             self.makeglider((i*10,5))
 
+
+    def getcell(self, new, addr):
+        coords = (addr[0]*CELLDIAMETER, adr[1]*CELLDIAMETER)
+        if len(self.cells[new]):
+            cell = self.cells[new].pop()
+            cell.position = coords
+            cell.visible = True
+        else:
+            cell = Cell(new, coords)
+        self.livingcells[new].append(cell)
+        return cell
 
     def makeglider(self, pos):
         self.livingcells[pos] = 0
